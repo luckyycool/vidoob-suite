@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VideosDrive — Instant In-Browser Video & Audio Converter</title>
+  <meta name="description" content="Zero-upload media drive. Extract MP3 audio from video, fix subtitle desync, and convert video clips at lightning speed on your computer. 100% private." />
+  
+  <!-- Favicon Placeholders (Dynamic) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>" />
+  
+  <!-- Google AdSense Verification -->
+  <meta name="google-adsense-account" content="ca-pub-0897820292119776" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0897820292119776" crossorigin="anonymous"></script>
+
+  <!-- Design System Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="keywords" content="video to mp3, extract audio from video, srt to vtt converter, fix subtitle desync, video trimmer in-browser, videosdrive" />
+
+  <!-- OpenGraph & Twitter Social Cards -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="VideosDrive" />
+  <meta property="og:title" content="VideosDrive — Instant In-Browser Video & Audio Converter" />
+  <meta property="og:description" content="Zero-upload media drive. Extract MP3 audio from video, fix subtitle desync, and convert video clips at lightning speed on your computer. 100% private." />
+  <meta property="og:url" content="https://videosdrive.com/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="VideosDrive — Instant In-Browser Video & Audio Converter" />
+  <meta name="twitter:description" content="Zero-upload media drive. Extract MP3 audio from video, fix subtitle desync, and convert video clips at lightning speed on your computer. 100% private." />
+
+  <link rel="canonical" href="https://videosdrive.com/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "VideosDrive",
+    "url": "https://videosdrive.com/",
+    "description": "Zero-upload media drive. Extract MP3 audio from video, fix subtitle desync, and convert video clips at lightning speed on your computer. 100% private.",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "All (Web Browser)",
+    "browserRequirements": "Requires HTML5, Web Audio, and WebAssembly support",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+</head>
+<body class="brand-drive">
+
+  <!-- Top Sticky Header -->
+  <header class="suite-header">
+    <!-- Top Branding & Trust Bar -->
+    <div class="header-top-bar">
+      <div class="container-90 header-top-inner">
+        <a href="/" class="brand-wrapper">
+          <span class="brand-icon" id="brand-icon-slot">📁</span>
+          <span class="brand-title" id="brand-title-slot">VideosDrive</span>
+          <span class="brand-badge" id="brand-badge-slot">Media Drive</span>
+        </a>
+
+        <!-- Security / Privacy Trust Pill -->
+        <div class="header-right-group">
+          <span class="trust-badge-pill">
+            🔒 100% In-Browser Privacy • Zero Server Uploads
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Secondary Dedicated Tool Navigation Sub-Bar (No Browser Scrollbars) -->
+    <div class="header-nav-bar">
+      <div class="container-90">
+        <nav class="tool-nav-tabs" id="tool-nav-tabs">
+          <!-- Rendered dynamically by app.js -->
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="container-90">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-pill" id="hero-pill">📁 MEDIA DRIVE • CLIENT-SIDE COMPUTING • ZERO STORAGE</div>
+      <h1 class="hero-title" id="hero-title">Your Private In-Browser Video & Audio Converter Drive.</h1>
+      <p class="hero-subtitle" id="hero-subtitle">
+        Extract crisp audio tracks, repair desynchronized subtitles, and convert media formats without uploading a single megabyte to external servers. Fast, confidential, and completely free.
+      </p>
+      <div class="hero-cta-group" style="display: flex; gap: 12px; justify-content: center; align-items: center; margin-top: 20px; flex-wrap: wrap;">
+        <button type="button" class="btn-primary" id="hero-primary-cta">
+          <span id="hero-primary-cta-label">🎵 Extract Audio From Video →</span>
+        </button>
+        <button type="button" class="btn-secondary" id="hero-secondary-cta">
+          <span id="hero-secondary-cta-label">📝 Repair Desynced Subtitles</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Main Tool Workbench Area -->
+    <div class="workbench-wrapper">
+      
+      <!-- ========================================== -->
+      <!-- TOOL 0: Native Gemini AI Creator & SEO Studio -->
+      <!-- ========================================== -->
+      <section class="tool-panel" id="tool-panel-ai-studio">
+        <div class="tool-header-row">
+          <div class="tool-title-group">
+            <h2><span>✨</span> <span>Gemini AI Video & Content Studio</span></h2>
+            <p>Generate high-CTR YouTube titles, keyword-dense descriptions, viral hook rewrites, and chapter outlines in seconds.</p>
+          </div>
+          <button type="button" class="btn-secondary" id="btn-toggle-api-key" style="font-size: 12px;">
+            <span>🔑</span> <span id="api-key-status-label">Google AI Key: Free Mode</span>
+          </button>
+        </div>
+
+        <!-- Optional API Key Input Drawer -->
+        <div id="api-key-drawer" style="display: none; margin-bottom: 24px; padding: 16px; background: var(--surface-bg); border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <label style="font-weight: 700; font-size: 13px;">Google AI Studio API Key (Free Tier):</label>
+            <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer" style="font-size: 12px; color: var(--primary-color); font-weight: 600;">Get Free Gemini Key (1,500 req/day) →</a>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <input type="password" id="gemini-key-input" placeholder="Paste your AI Studio API key (AIzaSy...)" style="flex: 1; padding: 8px 12px; border: 1px solid var(--border-color); border-radius: var(--radius-sm); font-family: var(--font-mono); font-size: 13px;" />
+            <button type="button" class="btn-primary" id="btn-save-key" style="padding: 8px 16px; font-size: 13px;">Save Key</button>
+            <button type="button" class="btn-secondary" id="btn-clear-key" style="padding: 8px 14px; font-size: 13px;">Use Test Mode</button>
+          </div>
+          <p style="font-size: 11px; color: var(--text-muted); margin-top: 6px;">Your API key is stored strictly inside your browser's <code>localStorage</code>. It is never transmitted to our servers.</p>
+        </div>
+
+        <!-- Sub-Tool Navigation -->
+        <div style="display: flex; gap: 8px; margin-bottom: 24px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; overflow-x: auto;">
+          <button type="button" class="btn-secondary ai-subtab-btn active" data-subtab="seo">YouTube SEO Architect</button>
+          <button type="button" class="btn-secondary ai-subtab-btn" data-subtab="hooks">Viral Hook Rewriter</button>
+          <button type="button" class="btn-secondary ai-subtab-btn" data-subtab="chapters">Auto-Chapter Extractor</button>
+        </div>
+
+        <!-- Sub-Tool 1: YouTube SEO Architect -->
+        <div class="ai-subpanel" id="ai-subpanel-seo">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
+            <div>
+              <label style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 8px;">Video Topic or Working Title:</label>
+              <input type="text" id="ai-seo-topic" placeholder="e.g. How to Build a SaaS with Python and Supabase" style="width: 100%; padding: 12px 16px; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-family: inherit; font-size: 14px; margin-bottom: 14px;" />
+              
+              <label style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 8px;">Content Niche:</label>
+              <select id="ai-seo-niche" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-family: inherit; font-size: 14px; background: var(--surface-bg); margin-bottom: 18px;">
+                <option value="Tech & Coding">Tech & Coding</option>
+                <option value="Finance & Investing">Finance & Investing</option>
+                <option value="Business & Startups">Business & Startups</option>
+                <option value="Education & How-To">Education & How-To</option>
+                <option value="Fitness & Health">Fitness & Health</option>
+                <option value="Lifestyle & Productivity">Lifestyle & Productivity</option>
+              </select>
+
+              <button type="button" class="btn-primary w-full justify-center" id="btn-generate-ai-seo">
+                <span>✨ Generate High-CTR SEO with Gemini AI</span>
+              </button>
+            </div>
+
+            <!-- Results Output -->
+            <div id="ai-seo-results" style="background: var(--surface-bg); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 20px; display: none;">
+              <h4 style="font-size: 14px; font-weight: 800; margin-bottom: 10px; color: var(--primary-color);">Top 5 Click-Worthy Titles:</h4>
+              <ul id="ai-seo-titles-list" style="list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px;"></ul>
+
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <h4 style="font-size: 14px; font-weight: 800; color: var(--primary-color);">Optimized YouTube Description:</h4>
+                <button type="button" class="btn-secondary" id="btn-copy-ai-desc" style="font-size: 11px; padding: 4px 10px;">Copy Description</button>
+              </div>
+              <textarea id="ai-seo-desc-output" class="input-textarea" style="min-height: 120px; font-size: 12px; margin-bottom: 16px;" readonly></textarea>
+
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <h4 style="font-size: 14px; font-weight: 800; color: var(--primary-color);">Recommended Search Tags:</h4>
+                <button type="button" class="btn-secondary" id="btn-copy-all-tags" style="font-size: 11px; padding: 4px 10px;">📋 Copy All Tags (YouTube Format)</button>
+              </div>
+              <div id="ai-seo-tags-container" style="display: flex; flex-wrap: wrap; gap: 6px;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sub-Tool 2: Viral Hook Rewriter -->
+        <div class="ai-subpanel" id="ai-subpanel-hooks" style="display: none;">
+          <div style="max-width: 800px; margin: 0 auto;">
+            <label style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 8px;">Paste Your Draft Video Opening Line:</label>
+            <textarea id="ai-hook-input" class="input-textarea" style="min-height: 90px; margin-bottom: 14px;" placeholder="e.g. In this video, I will show you how to save money on your groceries every week..."></textarea>
+
+            <button type="button" class="btn-primary" id="btn-rewrite-hooks">
+              <span>⚡ Rewrite Into 5 Viral Hooks</span>
+            </button>
+
+            <div id="ai-hooks-results" style="margin-top: 24px; display: none; display: flex; flex-direction: column; gap: 14px;"></div>
+          </div>
+        </div>
+
+        <!-- Sub-Tool 3: Auto-Chapter Extractor -->
+        <div class="ai-subpanel" id="ai-subpanel-chapters" style="display: none;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
+            <div>
+              <label style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 8px;">Paste Rough Video Notes or Audio Transcript:</label>
+              <textarea id="ai-chapters-raw" class="input-textarea" placeholder="Paste full transcript or bullet notes... Gemini will extract timestamped chapters compliant with YouTube standards."></textarea>
+              <button type="button" class="btn-primary mt-3" id="btn-ai-extract-chapters">
+                <span>⏱️ Extract YouTube Chapters</span>
+              </button>
+            </div>
+            <div>
+              <label style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 8px;">AI-Generated Chapters:</label>
+              <textarea id="ai-chapters-output" class="input-textarea" readonly placeholder="Timestamped chapters will appear here..."></textarea>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- ========================================== -->
+      <!-- TOOL 1: YouTube Chapters Generator & Scrubber -->
+      <!-- ========================================== -->
+      <section class="tool-panel" id="tool-panel-chapters" style="display: none;">
+        <div class="tool-header-row">
+          <div class="tool-title-group">
+            <h2><span>⏱️</span> <span>YouTube Chapter & Timestamp Formatter</span></h2>
+            <p>Paste rough notes or video transcripts. Formats to YouTube algorithm guidelines with 1 click.</p>
+          </div>
+          <button type="button" class="btn-secondary" id="btn-sample-chapters">Load Example Chapters</button>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
+          <!-- Left: Input -->
+          <div>
+            <label style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 8px;">
+              Raw Notes or Video Timestamps:
+            </label>
+            <textarea class="input-textarea" id="chapters-input" placeholder="00:00 Intro&#10;1:15 The Secret Formula&#10;3:45 Behind The Scenes&#10;6:30 Final Results"></textarea>
+            
+            <div id="chapters-validation" style="margin-top: 12px; padding: 12px; background: var(--surface-bg); border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+              <span style="color: var(--text-muted); font-size: 13px;">Enter timestamps to validate against YouTube algorithm rules.</span>
+            </div>
+          </div>
+
+          <!-- Right: Output & Copy -->
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <label style="font-weight: 700; font-size: 13px;">Formatted Description Output:</label>
+              <button type="button" class="btn-primary" id="btn-copy-chapters" style="padding: 6px 14px; font-size: 12px;">
+                <span>📋 Copy Formatted Chapters</span>
+              </button>
+            </div>
+            <textarea class="input-textarea" id="chapters-output" readonly placeholder="Formatted output will appear here..."></textarea>
+            
+            <div style="margin-top: 12px;">
+              <span style="font-size: 12px; font-weight: 700; color: var(--text-secondary);">Timeline Distribution Preview:</span>
+              <div class="chapter-timeline-bar" id="chapters-timeline"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- TOOL 2: Audio Extractor (Video to MP3/WAV) -->
+      <!-- ========================================== -->
+      <section class="tool-panel" id="tool-panel-audio-extractor" style="display: none;">
+        <div class="tool-header-row">
+          <div class="tool-title-group">
+            <h2><span>🎵</span> <span>In-Browser Audio Track Extractor (MP4 ➔ WAV)</span></h2>
+            <p>Decodes and extracts sound at 50x real-time speed using the Web Audio API. 100% confidential.</p>
+          </div>
+        </div>
+
+        <input type="file" id="audio-file-input" accept="video/*,audio/*" style="display: none;" />
+        <div class="dropzone-card" id="audio-dropzone">
+          <div class="dropzone-icon">📥</div>
+          <div class="dropzone-title">Click to Select or Drag & Drop Video File</div>
+          <div class="dropzone-subtitle">Supports .mp4, .mov, .webm, .m4v (Processes on your device CPU)</div>
+        </div>
+
+        <!-- Processing Progress Indicator -->
+        <div id="audio-progress" style="display: none; margin-top: 24px; padding: 20px; background: var(--surface-bg); border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+          <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 13px; margin-bottom: 8px;">
+            <span id="audio-progress-label">Decoding audio stream...</span>
+          </div>
+          <div style="height: 10px; background: var(--border-color); border-radius: 999px; overflow: hidden;">
+            <div id="audio-progress-bar" style="width: 0%; height: 100%; background: var(--primary-color); transition: width 0.2s;"></div>
+          </div>
+        </div>
+
+        <!-- Extraction Result Card -->
+        <div id="audio-result-card" style="display: none; margin-top: 24px; padding: 24px; background: var(--surface-bg); border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: gap: 16px;">
+            <div>
+              <div style="font-weight: 800; font-size: 16px; color: var(--text-primary);">Extracted Master Audio (PCM 16-Bit WAV)</div>
+              <div style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">File Size: <span id="extracted-audio-size">0 MB</span> • High-fidelity studio master</div>
+            </div>
+            <a id="btn-download-audio" class="btn-primary" href="#" download="extracted_audio.wav">
+              <span>⬇️ Download WAV Audio</span>
+            </a>
+          </div>
+          <div style="margin-top: 16px;">
+            <audio id="extracted-audio-player" controls style="width: 100%; border-radius: 999px;"></audio>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- TOOL 3: Subtitle Converter & Time-Shifter -->
+      <!-- ========================================== -->
+      <section class="tool-panel" id="tool-panel-subtitles" style="display: none;">
+        <div class="tool-header-row">
+          <div class="tool-title-group">
+            <h2><span>📝</span> <span>Subtitle Converter & Millisecond Time-Shifter</span></h2>
+            <p>Convert SRT to VTT, shift timestamps to fix audio desynchronization, or extract clean transcripts.</p>
+          </div>
+          <button type="button" class="btn-secondary" id="btn-sample-subtitle">Load Sample SRT</button>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
+          <!-- Left: Input & Offset Controls -->
+          <div>
+            <label style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 8px;">Paste SRT / WebVTT Content:</label>
+            <textarea class="input-textarea" id="subtitle-input" placeholder="1&#10;00:00:01,000 --> 00:00:04,000&#10;Paste raw subtitle file content here..."></textarea>
+            
+            <div style="margin-top: 16px; padding: 16px; background: var(--surface-bg); border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+              <label style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 6px;">
+                Time-Shift Offset (Milliseconds):
+              </label>
+              <div style="display: flex; gap: 8px;">
+                <input type="number" id="shift-ms-input" value="1000" placeholder="+1000 or -500" style="padding: 8px 12px; border: 1px solid var(--border-color); border-radius: var(--radius-sm); font-family: var(--font-mono); width: 140px;" />
+                <button type="button" class="btn-primary" id="btn-shift-subtitles" style="padding: 8px 16px; font-size: 13px;">
+                  Apply Shift
+                </button>
+              </div>
+              <span style="font-size: 11px; color: var(--text-muted); display: block; margin-top: 4px;">Positive shifts forward (delay), negative shifts earlier.</span>
+            </div>
+
+            <!-- Transformation Actions -->
+            <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px;">
+              <button type="button" class="btn-secondary" id="btn-convert-vtt">Convert to WebVTT</button>
+              <button type="button" class="btn-secondary" id="btn-convert-srt">Convert to SRT</button>
+              <button type="button" class="btn-secondary" id="btn-extract-text">Extract Clean Text</button>
+            </div>
+          </div>
+
+          <!-- Right: Result -->
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 6px;">
+              <label style="font-weight: 700; font-size: 13px;">Processed Output:</label>
+              <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                <button type="button" class="btn-primary" id="btn-copy-subtitle" style="padding: 6px 12px; font-size: 12px;">
+                  Copy Result
+                </button>
+                <button type="button" class="btn-secondary" id="btn-download-srt" style="padding: 6px 12px; font-size: 12px;">
+                  ⬇️ Download .SRT
+                </button>
+                <button type="button" class="btn-secondary" id="btn-download-vtt" style="padding: 6px 12px; font-size: 12px;">
+                  ⬇️ Download .VTT
+                </button>
+              </div>
+            </div>
+            <textarea class="input-textarea" id="subtitle-output" readonly placeholder="Modified subtitles or clean transcript will appear here..."></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- TOOL 4: Social Safe-Zone Overlay Inspector -->
+      <!-- ========================================== -->
+      <section class="tool-panel" id="tool-panel-safe-zones" style="display: none;">
+        <div class="tool-header-row">
+          <div class="tool-title-group">
+            <h2><span>📱</span> <span>Social Video Safe-Zone Inspector</span></h2>
+            <p>Preview where TikTok, Reels, and Shorts platform UI blocks captions, text, and faces.</p>
+          </div>
+          
+          <!-- Platform Filter Pills -->
+          <div style="display: flex; gap: 6px;">
+            <button type="button" class="btn-secondary platform-pill-btn active" data-platform="tiktok">TikTok</button>
+            <button type="button" class="btn-secondary platform-pill-btn" data-platform="reels">Instagram Reels</button>
+            <button type="button" class="btn-secondary platform-pill-btn" data-platform="shorts">YouTube Shorts</button>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; align-items: center; padding: 16px 0;">
+          <!-- Custom Video / Image Test Controls -->
+          <div style="margin-bottom: 16px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center;">
+            <input type="file" id="safe-zone-file-input" accept="video/*,image/*" style="display: none;" />
+            <button type="button" class="btn-primary" id="btn-upload-safe-zone" style="font-size: 13px; padding: 8px 16px;">
+              <span>📤 Test Your 9:16 Video / Image</span>
+            </button>
+            <button type="button" class="btn-secondary" id="btn-reset-safe-zone" style="font-size: 13px; padding: 8px 14px;">
+              <span>↺ Reset Preview</span>
+            </button>
+          </div>
+
+          <!-- Smartphone Viewport Frame -->
+          <div class="safe-zone-viewport">
+            <video class="safe-zone-video-preview" id="safe-zone-video" autoplay loop muted playsinline poster="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22380%22 height=%22620%22><rect width=%22100%%22 height=%22100%%22 fill=%22%231e293b%22/><text x=%2250%%22 y=%2250%%22 fill=%22%2394a3b8%22 text-anchor=%22middle%22 font-family=%22sans-serif%22 font-size=%2214%22>9:16 Video Frame</text></svg>"></video>
+            <img id="safe-zone-img-preview" style="display: none; width: 100%; height: 100%; object-fit: cover;" alt="Custom Safe-Zone Test" />
+
+            <!-- Safe Box Indicator -->
+            <div id="safe-box-container" style="position: absolute; inset: 0; pointer-events: none;"></div>
+
+            <!-- Red Danger Zones -->
+            <div class="safe-zone-overlay-layer" id="safe-zone-overlays"></div>
+          </div>
+
+          <p style="margin-top: 16px; font-size: 13px; color: var(--text-muted); text-align: center; max-width: 500px;">
+            Keep all key text, closed captions, and subject focal points inside the green safe area to guarantee visibility across all mobile screens.
+          </p>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- TOOL 5: Video-to-GIF Trimmer -->
+      <!-- ========================================== -->
+      <section class="tool-panel" id="tool-panel-gif-maker" style="display: none;">
+        <div class="tool-header-row">
+          <div class="tool-title-group">
+            <h2><span>🎬</span> <span>Video to High-FPS Clip & WebM Trimmer</span></h2>
+            <p>Trim video clips and generate animated loops locally on your CPU with zero watermarks.</p>
+          </div>
+        </div>
+
+        <input type="file" id="gif-file-input" accept="video/*" style="display: none;" />
+        
+        <div class="dropzone-card" id="gif-dropzone">
+          <div class="dropzone-icon">✂️</div>
+          <div class="dropzone-title">Click to Select or Drag & Drop Video to Trim</div>
+          <div class="dropzone-subtitle">Choose start and end times to render zero-watermark clips locally</div>
+        </div>
+
+        <!-- Trimmer Workspace (Shown after video loaded) -->
+        <div id="gif-trimmer-workspace" style="display: none; margin-top: 24px; padding: 24px; background: var(--surface-bg); border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+          <div style="max-width: 640px; margin: 0 auto;">
+            <video id="gif-video-player" controls playsinline style="width: 100%; max-height: 360px; border-radius: var(--radius-sm); background: #000; margin-bottom: 16px;"></video>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+              <div>
+                <label style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 6px;">Start Time (seconds):</label>
+                <input type="number" id="gif-start-time" value="0" min="0" step="0.5" style="width: 100%; padding: 8px 12px; border: 1px solid var(--border-color); border-radius: var(--radius-sm);" />
+              </div>
+              <div>
+                <label style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 6px;">End Time (seconds):</label>
+                <input type="number" id="gif-end-time" value="5" min="0.5" step="0.5" style="width: 100%; padding: 8px 12px; border: 1px solid var(--border-color); border-radius: var(--radius-sm);" />
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 12px; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+              <div style="font-size: 13px; color: var(--text-muted);">
+                Estimated Clip Duration: <strong id="gif-duration-label" style="color: var(--primary-color);">5.0s</strong>
+              </div>
+              <button type="button" class="btn-primary" id="btn-export-clip">
+                <span>✂️ Trim & Render Clip Locally</span>
+              </button>
+            </div>
+
+            <!-- Export Progress -->
+            <div id="gif-progress" style="display: none; margin-top: 16px;">
+              <div style="font-size: 12px; font-weight: 700; margin-bottom: 4px;" id="gif-progress-label">Rendering frames...</div>
+              <div style="height: 6px; background: var(--border-color); border-radius: 999px; overflow: hidden;">
+                <div id="gif-progress-bar" style="width: 0%; height: 100%; background: var(--primary-color); transition: width 0.2s;"></div>
+              </div>
+            </div>
+
+            <!-- Result Card -->
+            <div id="gif-result-card" style="display: none; margin-top: 20px; padding: 16px; background: var(--surface-card); border-radius: var(--radius-sm); border: 1px solid var(--border-color); text-align: center;">
+              <h4 style="font-size: 14px; font-weight: 800; color: #16a34a; margin-bottom: 8px;">✓ Clip Rendered Successfully!</h4>
+              <video id="gif-result-video" controls autoplay loop muted playsinline style="max-width: 100%; max-height: 240px; border-radius: 6px; margin-bottom: 12px;"></video>
+              <div>
+                <a id="btn-download-clip" class="btn-primary" href="#" download="trimmed_clip.webm" style="font-size: 13px;">
+                  <span>⬇️ Download Clean WebM Clip</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- TOOL 6: 300+ Viral Retention Hooks Directory -->
+      <!-- ========================================== -->
+      <section class="tool-panel" id="tool-panel-hooks" style="display: none;">
+        <div class="tool-header-row">
+          <div class="tool-title-group">
+            <h2><span>💡</span> <span>300+ Viral Video Retention Hooks & Script Starters</span></h2>
+            <p>Proven hook frameworks to maximize retention past the critical 3-second algorithm test.</p>
+          </div>
+        </div>
+
+        <!-- Filter Controls -->
+        <div style="display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap;">
+          <input type="text" id="hooks-search" placeholder="Search hooks by keyword (e.g. money, code, rule)..." style="flex: 1; min-width: 260px; padding: 10px 16px; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-family: inherit; font-size: 14px;" />
+          
+          <select id="hooks-niche-filter" style="padding: 10px 16px; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-family: inherit; font-size: 14px; background: var(--surface-bg);">
+            <option value="All">All Niches</option>
+            <option value="Tech & AI">Tech & AI</option>
+            <option value="Finance & Money">Finance & Money</option>
+            <option value="Business & Startups">Business & Startups</option>
+            <option value="Creator Growth">Creator Growth</option>
+            <option value="Productivity">Productivity</option>
+          </select>
+        </div>
+
+        <!-- Hooks Grid -->
+        <div class="hooks-grid" id="hooks-grid"></div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- TOOL: Exact-MB Video Size Reducer & Compressor -->
+      <!-- ========================================== -->
+      <section class="tool-panel" id="tool-panel-compressor" style="display: none;">
+        <div class="tool-header-row">
+          <div class="tool-title-group">
+            <h2><span>📦</span> <span>Exact-MB Video Compressor & Size Reducer</span></h2>
+            <p>Crunch videos down to exact target limits (Discord, WhatsApp, Email) on your CPU with zero server uploads.</p>
+          </div>
+        </div>
+
+        <!-- Quick Target Size Presets -->
+        <div style="margin-bottom: 20px;">
+          <label style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 8px;">Select Target Platform Limit:</label>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;" id="compressor-presets">
+            <button type="button" class="btn-secondary preset-btn active" data-mb="24.8">
+              🟣 Discord Free (24.8 MB)
+            </button>
+            <button type="button" class="btn-secondary preset-btn" data-mb="15.5">
+              🟢 WhatsApp (15.5 MB)
+            </button>
+            <button type="button" class="btn-secondary preset-btn" data-mb="9.8">
+              ✉️ Gmail / Outlook (9.8 MB)
+            </button>
+            <button type="button" class="btn-secondary preset-btn" data-mb="custom">
+              ⚙️ Custom MB
+            </button>
+          </div>
+        </div>
+
+        <div id="custom-mb-container" style="display: none; margin-bottom: 20px; max-width: 320px;">
+          <label style="display: block; font-weight: 700; font-size: 12px; margin-bottom: 4px;">Target File Size (Megabytes):</label>
+          <div style="display: flex; gap: 8px; align-items: center;">
+            <input type="number" id="compressor-target-input" value="24.8" min="1" max="500" step="0.5" style="padding: 8px 12px; border: 1px solid var(--border-color); border-radius: var(--radius-sm); width: 120px; font-family: var(--font-mono);" />
+            <span style="font-size: 13px; font-weight: 700; color: var(--text-secondary);">MB</span>
+          </div>
+        </div>
+
+        <input type="file" id="compressor-file-input" accept="video/*" style="display: none;" />
+        <div class="dropzone-card" id="compressor-dropzone">
+          <div class="dropzone-icon">📥</div>
+          <div class="dropzone-title">Click to Select or Drop Video to Compress</div>
+          <div class="dropzone-subtitle">Supports .mp4, .mov, .webm, .mkv (Calculates exact two-pass bitrate)</div>
+        </div>
+
+        <!-- Compression Workspace -->
+        <div id="compressor-workspace" style="display: none; margin-top: 24px; padding: 24px; background: var(--surface-bg); border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; align-items: start;">
+            <!-- Left: Video Preview & Stats -->
+            <div>
+              <video id="compressor-video-preview" controls playsinline style="width: 100%; max-height: 260px; border-radius: var(--radius-sm); background: #000; margin-bottom: 12px;"></video>
+              <div style="background: var(--surface-card); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 12px; font-size: 13px;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                  <span style="color: var(--text-muted);">Original File Size:</span>
+                  <strong id="compressor-orig-size">--</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                  <span style="color: var(--text-muted);">Duration:</span>
+                  <strong id="compressor-orig-duration">--</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                  <span style="color: var(--text-muted);">Target Limit:</span>
+                  <strong id="compressor-target-label" style="color: var(--primary-color);">24.8 MB</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Action & Output -->
+            <div>
+              <h4 style="font-size: 15px; font-weight: 800; margin-bottom: 8px;">Bitrate Optimization Engine</h4>
+              <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 16px;">
+                Our algorithm will dynamically adjust resolution and bitrate to hit your exact target without exceeding the platform upload limit.
+              </p>
+
+              <button type="button" class="btn-primary w-full justify-center" id="btn-start-compression" style="padding: 12px 24px; font-size: 14px;">
+                <span>⚡ Compress Video to Target MB</span>
+              </button>
+
+              <!-- Progress Bar -->
+              <div id="compressor-progress" style="display: none; margin-top: 20px;">
+                <div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; margin-bottom: 6px;">
+                  <span id="compressor-progress-status">Optimizing video stream...</span>
+                  <span id="compressor-progress-pct">0%</span>
+                </div>
+                <div style="height: 8px; background: var(--border-color); border-radius: 999px; overflow: hidden;">
+                  <div id="compressor-progress-bar" style="width: 0%; height: 100%; background: var(--primary-color); transition: width 0.2s;"></div>
+                </div>
+              </div>
+
+              <!-- Result Card -->
+              <div id="compressor-result-card" style="display: none; margin-top: 20px; padding: 16px; background: var(--surface-card); border-radius: var(--radius-sm); border: 1px solid var(--border-color); text-align: center;">
+                <div style="font-size: 14px; font-weight: 800; color: #16a34a; margin-bottom: 4px;">✓ Compression Complete!</div>
+                <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">
+                  Final File Size: <strong id="compressor-final-size" style="color: var(--text-primary);">--</strong> (Passed Platform Limit ✓)
+                </div>
+                <a id="btn-download-compressed" class="btn-primary" href="#" download="compressed_video.webm">
+                  <span>⬇️ Download Compressed Video</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- TOOL: AI YouTube Thumbnail & Face Crafter -->
+      <!-- ========================================== -->
+      <section class="tool-panel" id="tool-panel-thumbnail-crafter" style="display: none;">
+        <div class="tool-header-row">
+          <div class="tool-title-group">
+            <h2><span>🎨</span> <span>AI YouTube Thumbnail & Expressive Face Crafter</span></h2>
+            <p>Generate high-CTR click-worthy thumbnails with subject cutout, glow contours, and bold title overlays in seconds.</p>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
+          <!-- Left: Controls -->
+          <div>
+            <!-- Step 1: Face/Subject Upload -->
+            <div style="margin-bottom: 18px; padding: 16px; background: var(--surface-bg); border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+              <label style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 6px;">1. Subject / Creator Selfie (Optional):</label>
+              <input type="file" id="thumb-subject-input" accept="image/*" style="display: none;" />
+              <div style="display: flex; gap: 8px; align-items: center;">
+                <button type="button" class="btn-secondary" id="btn-upload-thumb-subject" style="font-size: 12px;">
+                  <span>👤 Select Selfie / Photo</span>
+                </button>
+                <button type="button" class="btn-secondary" id="btn-clear-thumb-subject" style="font-size: 12px; display: none;">
+                  <span>✕ Remove</span>
+                </button>
+              </div>
+
+              <!-- Glow Contour Color -->
+              <div style="margin-top: 12px;">
+                <label style="display: block; font-weight: 600; font-size: 12px; margin-bottom: 4px;">Contour Glow Color:</label>
+                <div style="display: flex; gap: 8px; align-items: center;" id="thumb-glow-colors">
+                  <button type="button" class="glow-color-btn active" data-color="#06b6d4" style="background: #06b6d4; width: 24px; height: 24px; border-radius: 999px; border: 2px solid #fff; cursor: pointer; box-shadow: 0 0 4px #06b6d4;" title="Electric Cyan"></button>
+                  <button type="button" class="glow-color-btn" data-color="#22c55e" style="background: #22c55e; width: 24px; height: 24px; border-radius: 999px; border: 2px solid #fff; cursor: pointer;" title="Neon Lime"></button>
+                  <button type="button" class="glow-color-btn" data-color="#f97316" style="background: #f97316; width: 24px; height: 24px; border-radius: 999px; border: 2px solid #fff; cursor: pointer;" title="Tangerine Orange"></button>
+                  <button type="button" class="glow-color-btn" data-color="#eab308" style="background: #eab308; width: 24px; height: 24px; border-radius: 999px; border: 2px solid #fff; cursor: pointer;" title="Electric Yellow"></button>
+                  <button type="button" class="glow-color-btn" data-color="#ffffff" style="background: #ffffff; width: 24px; height: 24px; border-radius: 999px; border: 2px solid #cbd5e1; cursor: pointer;" title="Crisp White"></button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 2: Theme Selector -->
+            <div style="margin-bottom: 18px; padding: 16px; background: var(--surface-bg); border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+              <label style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 8px;">2. Background Atmosphere Theme:</label>
+              <select id="thumb-theme-select" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border-color); border-radius: var(--radius-sm); font-family: inherit; font-size: 13px; background: var(--surface-card);">
+                <option value="cyberpunk">🚀 Tech Studio & Neon Laser (High CTR)</option>
+                <option value="danger">🔥 Red Alert & High Stakes Challenge</option>
+                <option value="gold">💰 Luxury Gold & Dark Penthouse</option>
+                <option value="studio">⚡ Fresh Daylight Cobalt Studio</option>
+                <option value="matrix">💻 Emerald Matrix & Code Grid</option>
+              </select>
+            </div>
+
+            <!-- Step 3: Bold Title Overlay -->
+            <div style="margin-bottom: 18px; padding: 16px; background: var(--surface-bg); border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <label style="font-weight: 700; font-size: 13px;">3. Bold 3-Word Title Overlay:</label>
+                <button type="button" class="btn-secondary" id="btn-ai-thumb-slogans" style="font-size: 11px; padding: 3px 8px;">✨ AI Slogans</button>
+              </div>
+              <input type="text" id="thumb-title-input" value="DON'T DO THIS" maxlength="30" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border-color); border-radius: var(--radius-sm); font-family: inherit; font-weight: 700; font-size: 14px; margin-bottom: 10px;" />
+
+              <label style="display: block; font-weight: 600; font-size: 12px; margin-bottom: 4px;">Typography Style:</label>
+              <div style="display: flex; gap: 6px;">
+                <button type="button" class="btn-secondary thumb-style-btn active" data-style="yellow-badge" style="font-size: 11px;">Yellow/Red Badge</button>
+                <button type="button" class="btn-secondary thumb-style-btn" data-style="white-stroke" style="font-size: 11px;">White + Stroke</button>
+                <button type="button" class="btn-secondary thumb-style-btn" data-style="neon-cyan" style="font-size: 11px;">Neon Glow</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Canvas Preview & Download -->
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <label style="font-weight: 700; font-size: 13px;">Live 1280x720 Canvas Preview:</label>
+              <button type="button" class="btn-primary" id="btn-download-thumbnail" style="padding: 6px 16px; font-size: 12px;">
+                <span>⬇️ Export 1280x720 Thumbnail</span>
+              </button>
+            </div>
+            
+            <div style="position: relative; width: 100%; aspect-ratio: 16/9; background: #000; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-md); border: 1px solid var(--border-color);">
+              <canvas id="thumb-canvas" style="width: 100%; height: 100%; display: block;"></canvas>
+            </div>
+            <p style="font-size: 11px; color: var(--text-muted); margin-top: 6px; text-align: center;">
+              Formatted to YouTube standard 16:9 1280x720. 100% rendered locally on your device GPU/CPU.
+            </p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Fixed Dimension CLS = 0 AdSense Leaderboard Slot (728x90) -->
+    <div style="margin: 32px auto 32px auto; text-align: center;">
+      <div class="ad-slot-leaderboard" id="adsense-top-banner">
+        <div>
+          <p style="font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 2px;">
+            Advertisement • Google AdSense Verified
+          </p>
+          <ins class="adsbygoogle"
+               style="display:inline-block;width:728px;height:90px"
+               data-ad-client="ca-pub-0897820292119776"
+               data-ad-slot="1234567890"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+      </div>
+    </div>
+
+    <!-- Native Gemini AI In-House Power Showcase -->
+    <div style="background: var(--surface-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 28px; margin-bottom: 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
+      <div style="max-width: 680px;">
+        <span style="font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--primary-color); display: flex; align-items: center; gap: 6px;">
+          <span>✨</span> <span>Google Gemini 1.5 Flash • 100% Native & Free</span>
+        </span>
+        <h3 style="font-family: var(--font-heading); font-size: 20px; font-weight: 800; color: var(--text-primary); margin: 6px 0 8px 0;">Automate Video SEO, High-CTR Titles & Viral Script Hooks</h3>
+        <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;">Why pay $20/month to third-party tools? Our built-in Gemini AI generates algorithmic YouTube chapters, search-optimized descriptions, and psychological retention hooks directly on your screen.</p>
+      </div>
+      <div style="display: flex; gap: 10px;">
+        <button type="button" class="btn-primary" onclick="document.querySelector('[data-tool=ai-studio]').click(); window.scrollTo({top: 250, behavior: 'smooth'});">
+          <span>✨ Launch AI Studio</span>
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="suite-footer">
+    <div class="container-90 footer-inner">
+      <div style="display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 16px; color: var(--text-primary);">
+        <span id="footer-logo-emoji">⚡</span>
+        <span id="footer-brand-name">Vidoob Suite</span>
+      </div>
+      <p style="max-width: 700px; margin: 0 auto; line-height: 1.6;" id="footer-text-slot">
+        VideosDrive is a privacy-first personal media utility drive. All conversions and audio extractions are processed locally on your hardware with zero cloud storage.
+      </p>
+      <div style="display: flex; gap: 16px; font-size: 12px; font-weight: 600; color: var(--text-muted); margin-top: 8px;">
+        <span>Client-Side Processing</span>
+        <span>•</span>
+        <span>Zero Server Uploads</span>
+        <span>•</span>
+        <span>No Data Retained</span>
+      </div>
+      <p style="font-size: 11px; color: var(--text-muted); margin-top: 12px;">
+        © 2026 Vidoob Suite Network. All rights reserved. Runs 100% locally on user hardware.
+      </p>
+    </div>
+  </footer>
+
+  
+
+  <!-- Shared Engine & App Controller Scripts -->
+  <script src="brands.js"></script>
+  <script src="js/engine/gemini-ai.js"></script>
+  <script src="js/engine/youtube-chapters.js"></script>
+  <script src="js/engine/audio-extractor.js"></script>
+  <script src="js/engine/subtitles.js"></script>
+  <script src="js/engine/safe-zones.js"></script>
+  <script src="js/engine/gif-maker.js"></script>
+  <script src="js/engine/video-compressor.js"></script>
+  <script src="js/engine/thumbnail-crafter.js"></script>
+  <script src="js/engine/hooks-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

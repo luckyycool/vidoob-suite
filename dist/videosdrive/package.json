@@ -1,0 +1,25 @@
+{
+  "name": "vidoob-suite",
+  "version": "1.0.0",
+  "description": "Multi-Brand Zero-Upload In-Browser Creator & Video Utilities Suite (vidoob.com & videosdrive.com)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "build": "node build.js",
+    "build:vidoob": "node build.js --brand=vidoob",
+    "build:drive": "node build.js --brand=drive",
+    "test": "node test.js"
+  },
+  "keywords": [
+    "video-tools",
+    "in-browser",
+    "webassembly",
+    "youtube-chapters",
+    "audio-extractor",
+    "subtitle-converter",
+    "safe-zones"
+  ],
+  "author": "MatriTimes / Vidoob Network",
+  "license": "MIT"
+}
