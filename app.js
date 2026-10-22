@@ -1059,6 +1059,76 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial render of thumbnail canvas
     setTimeout(updateThumbnail, 100);
 
+    // ==========================================
+    // Compliance & Legal Policy Modal Handlers
+    // ==========================================
+    const legalModal = document.getElementById('legal-modal');
+    const legalModalTitle = document.getElementById('legal-modal-title');
+    const legalModalBody = document.getElementById('legal-modal-body');
+    const btnCloseLegal = document.getElementById('btn-close-legal');
+    const btnOpenPrivacy = document.getElementById('btn-open-privacy');
+    const btnOpenTerms = document.getElementById('btn-open-terms');
+    const btnOpenSecurity = document.getElementById('btn-open-security');
+
+    function openLegalModal(title, content) {
+        if (!legalModal || !legalModalTitle || !legalModalBody) return;
+        legalModalTitle.textContent = title;
+        legalModalBody.innerHTML = content;
+        legalModal.style.display = 'flex';
+    }
+
+    if (btnCloseLegal && legalModal) {
+        btnCloseLegal.addEventListener('click', () => legalModal.style.display = 'none');
+        legalModal.addEventListener('click', (e) => {
+            if (e.target === legalModal) legalModal.style.display = 'none';
+        });
+    }
+
+    if (btnOpenPrivacy) {
+        btnOpenPrivacy.addEventListener('click', (e) => {
+            e.preventDefault();
+            openLegalModal('Privacy Policy', `
+                <p><strong>Last Updated: October 2026</strong></p>
+                <p style="margin-top: 8px;">Your privacy is our core engineering principle. All media tools on this site (Audio Extraction, Video Compression, YouTube Chapters, Subtitle Editing, and Thumbnail Crafter) run <strong>100% client-side</strong> inside your web browser using HTML5 Canvas, Web Audio, and WebAssembly APIs.</p>
+                <h4 style="margin: 12px 0 4px 0; color: var(--text-primary);">Zero Server Uploads</h4>
+                <p>No video, audio, or image files are ever uploaded, transmitted, or stored on our servers. All file processing occurs directly on your computer's CPU and GPU.</p>
+                <h4 style="margin: 12px 0 4px 0; color: var(--text-primary);">Google AdSense & Cookies</h4>
+                <p>We display third-party advertisements served by Google AdSense (Publisher ca-pub-0897820292119776). Google may use cookies to serve personalized ads based on your prior visits to this website or other websites.</p>
+                <h4 style="margin: 12px 0 4px 0; color: var(--text-primary);">Local Storage</h4>
+                <p>If you optionally input a Google AI Studio API key, it is stored strictly inside your browser's private <code>localStorage</code> and is never sent to our servers.</p>
+            `);
+        });
+    }
+
+    if (btnOpenTerms) {
+        btnOpenTerms.addEventListener('click', (e) => {
+            e.preventDefault();
+            openLegalModal('Terms of Service', `
+                <p><strong>Last Updated: October 2026</strong></p>
+                <p style="margin-top: 8px;">By accessing and using this service, you agree to these Terms of Service. These tools are provided free of charge for personal and commercial content creators.</p>
+                <h4 style="margin: 12px 0 4px 0; color: var(--text-primary);">License & Intellectual Property</h4>
+                <p>All media generated, extracted, or converted using our tools belongs 100% to you. We claim zero ownership, license rights, or royalties over your videos, audio tracks, or graphics.</p>
+                <h4 style="margin: 12px 0 4px 0; color: var(--text-primary);">Disclaimer of Warranty</h4>
+                <p>The tools and services are provided "as is" without warranty of any kind. You are responsible for ensuring that you have the right to edit and convert any media files you process.</p>
+            `);
+        });
+    }
+
+    if (btnOpenSecurity) {
+        btnOpenSecurity.addEventListener('click', (e) => {
+            e.preventDefault();
+            openLegalModal('Security & Confidentiality Statement', `
+                <p><strong>Enterprise-Grade Client Isolation</strong></p>
+                <p style="margin-top: 8px;">Our architecture employs zero-backend file processing. When you drop a video into our tools:</p>
+                <ul style="padding-left: 20px; margin-top: 8px;">
+                    <li>Files are decoded using native browser ArrayBuffers and Web Audio decoders.</li>
+                    <li>No intermediate cloud staging storage exists.</li>
+                    <li>Closing your browser tab immediately releases all memory buffers.</li>
+                </ul>
+            `);
+        });
+    }
+
     // Finalize Brand Initialization
     applyBrand(currentBrandId);
 });

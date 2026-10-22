@@ -19,11 +19,14 @@ function copyDir(src, dest) {
         const destPath = path.join(dest, entry.name);
 
         if (entry.isDirectory()) {
-            if (entry.name !== 'dist' && entry.name !== 'node_modules' && entry.name !== '.git') {
+            if (entry.name !== 'dist' && entry.name !== 'node_modules' && entry.name !== '.git' && entry.name !== '.github') {
                 copyDir(srcPath, destPath);
             }
         } else {
-            fs.copyFileSync(srcPath, destPath);
+            const devFiles = ['build.js', 'server.js', 'test.js', 'deploy.ps1', 'wrangler.vidoob.jsonc', 'wrangler.videosdrive.jsonc', 'package.json'];
+            if (!devFiles.includes(entry.name)) {
+                fs.copyFileSync(srcPath, destPath);
+            }
         }
     }
 }
@@ -111,8 +114,15 @@ function buildBrand(brandId) {
     // 6. In static production build, remove the floating dev switcher pill
     html = html.replace(/<!-- ======================================================== -->\s*<!-- Floating Localhost Brand Switcher Pill for User Testing  -->[\s\S]*?<\/div>/i, '');
 
+    // 7. Inject brand-specific favicon emoji
+    html = html.replace(/<text y=%22\.9em%22 font-size=%2290%22>.*?<\/text>/i, `<text y=%22.9em%22 font-size=%2290%22>${brand.logoEmoji}</text>`);
+
     // Write finalized production index.html
     fs.writeFileSync(path.join(outDir, 'index.html'), html, 'utf8');
+
+    // Create ads.txt
+    const adsTxt = 'google.com, pub-0897820292119776, DIRECT, f08c47fec0942fa0\n';
+    fs.writeFileSync(path.join(outDir, 'ads.txt'), adsTxt, 'utf8');
 
     // Create robots.txt
     const robots = `User-agent: *\nAllow: /\n\nSitemap: https://${brand.domain}/sitemap.xml\n`;

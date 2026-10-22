@@ -7,7 +7,7 @@
   <meta name="description" content="Zero-upload media drive. Extract MP3 audio from video, fix subtitle desync, and convert video clips at lightning speed on your computer. 100% private." />
   
   <!-- Favicon Placeholders (Dynamic) -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📁</text></svg>" />
   
   <!-- Google AdSense Verification -->
   <meta name="google-adsense-account" content="ca-pub-0897820292119776" />
@@ -745,11 +745,31 @@
         <span>•</span>
         <span>No Data Retained</span>
       </div>
+      <div style="display: flex; gap: 16px; font-size: 12px; font-weight: 600; color: var(--text-muted); margin-top: 10px; flex-wrap: wrap; justify-content: center;">
+        <a href="#privacy" style="color: var(--primary-color); text-decoration: none;" id="btn-open-privacy">Privacy Policy</a>
+        <span>•</span>
+        <a href="#terms" style="color: var(--primary-color); text-decoration: none;" id="btn-open-terms">Terms of Service</a>
+        <span>•</span>
+        <a href="#security" style="color: var(--primary-color); text-decoration: none;" id="btn-open-security">Security & Data Statement</a>
+      </div>
       <p style="font-size: 11px; color: var(--text-muted); margin-top: 12px;">
         © 2026 Vidoob Suite Network. All rights reserved. Runs 100% locally on user hardware.
       </p>
     </div>
   </footer>
+
+  <!-- Compliance & Legal Policy Modal -->
+  <div id="legal-modal" style="display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(4px); z-index: 9999; align-items: center; justify-content: center; padding: 20px;">
+    <div style="background: var(--surface-card); max-width: 650px; width: 100%; max-height: 85vh; border-radius: var(--radius-md); border: 1px solid var(--border-color); box-shadow: var(--shadow-lg); display: flex; flex-direction: column; overflow: hidden;">
+      <div style="padding: 18px 24px; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;">
+        <h3 id="legal-modal-title" style="font-size: 16px; font-weight: 800; color: var(--text-primary);">Privacy Policy</h3>
+        <button type="button" id="btn-close-legal" style="background: transparent; border: none; font-size: 24px; cursor: pointer; color: var(--text-muted);">&times;</button>
+      </div>
+      <div id="legal-modal-body" style="padding: 24px; overflow-y: auto; font-size: 13px; line-height: 1.7; color: var(--text-secondary);">
+        <!-- Injected dynamically by app.js -->
+      </div>
+    </div>
+  </div>
 
   
 
